@@ -1,0 +1,33 @@
+<html>
+
+  <head>
+    <title>API Test</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(function () {
+        $.ajax({
+          data: {
+            'with': 'area'
+          },
+          dataType: 'jsonp',
+          url: 'http://localhost:8000/v1/employment'
+        }).then(function (data) {
+          var $list = $('.list');
+          for (var i = 0; i < data.length; i++) {
+            $list.append('<li>' + data[i].area.name + ' [' + data[i].area.type + '] - ' + data[i].laborforce + '</li>');
+          }
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+
+    <h1>API Test</h1>
+
+    <ul class="list"></ul>
+
+  </body>
+
+</html>
